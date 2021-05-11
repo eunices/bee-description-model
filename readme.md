@@ -72,8 +72,6 @@ Description: aggregated offset data (by publication or by describer, or any othe
 - `group`: group for taxonomic effort metric
 - `N`: number of units of units of taxonomic effort 
 
-
-
 ## How to: run the model
 
 - Edit `model_params` in `params.r`
@@ -98,7 +96,7 @@ note: `02-forercast.r` should only be run *after* running `01-model.r` as it dep
 
 ## How to: evaluate the model
 
-
+TODO:
 
 ## Folder structure and important files
 
@@ -115,3 +113,4 @@ note: `02-forercast.r` should only be run *after* running `01-model.r` as it dep
   - `model/forecast-<X>-yrs.data`: posterior forecast (count data) for `X` number of years into the future from the last date. Recommended to use 10 years.
   - `model/warnings.log`: warnings logged from `01-model.r`. May include stan warnings.
   - `model/model.log`: model log, including model parameters and duration taken to run the stan model
+  - `model/results/*`: visualisations and summarised results (`csv` files)

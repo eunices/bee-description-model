@@ -2,7 +2,7 @@ model/*
 data/*
 *.csv
 
-# except test data
-
+# except sample data
 !data/data-example.csv
 !data/offset-example.csv
+!*.gitkeep
