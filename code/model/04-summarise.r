@@ -38,7 +38,7 @@ group_cf2 <- li_df_delta$group_cf2   # Slope of delta (beta) coefficient
 cf2 <- li_df_delta$cf2               # Summarized slope of delta (beta) & 80 CI
 
 
-####### Create results table - part 1
+####### Create results table
 results <- combine_results(sum_y, obs_count, cf2, mapping)
 
 # Output csv table
