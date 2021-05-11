@@ -53,7 +53,9 @@ Description: species data. Each row is one species.
 - `year`: year in which species was described/ "discovered"
 - `group`: group in which the species belong to. Group may be a region (e.g. biogeographic realm) or a taxonomic rank (e.g. family)
 
-- For `data/offset.csv`
+- For `data/offset.csv` (**OPTIONAL**)
+
+This file is optional. If not provided, offset matrix will contain zeroes.
 
 ```csv
 year,group,N
@@ -71,6 +73,8 @@ Description: aggregated offset data (by publication or by describer, or any othe
 - `year`: year for taxonomic effort metric
 - `group`: group for taxonomic effort metric
 - `N`: number of units of units of taxonomic effort 
+
+
 
 ## How to: run the model
 

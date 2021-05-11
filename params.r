@@ -1,5 +1,4 @@
 model_params <- list(
-    te = 1,                           # taxonomic effort type
     chains = 4,                       # stan chains
     iter = 20000,                     # stan iterations
     adapt_delta = 0.9,                # stan adapt delta

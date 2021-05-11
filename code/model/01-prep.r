@@ -1,17 +1,10 @@
 print(paste0(Sys.time(), " --- 01-prep.r"))
 
-# Load data
+# Create counts matrix
 
-# Unique species (year + author) assigned to groups
+# Load data
 input_filepath <- paste0(dir_data, "data.csv")
 data <- fread(input_filepath, na = c(''), encoding = "UTF-8")
-
-# Summarised number of offset (e.g. publication or author) for each year
-input_filepath <- paste0(dir_data, "offset.csv")
-off <- fread(input_filepath, na = c(''), encoding = "UTF-8")
-
-
-# Create counts matrix
 
 # Count number of species in each group for each year
 counts <- data[, list(.N), by = c("group", "year")]
@@ -37,37 +30,38 @@ if(dim(count_mat)[2] <= 2){
     count_mat <- count_mat[, -1]
 }
 
-
-
 # Create offset matrix
 
-# Reshape from long to wide
-off_df <- dcast(off, year ~ group, value.var = "N", fun.aggregate = sum)
-template <- data.frame(year = min(data$year):max(data$year))
-off_df <- merge(template, off_df, by = "year",all.x = T, all.y = F)
+input_filepath <- paste0(dir_data, "offset.csv")
+if(file.exists(input_filepath)) {
+    # Load data
+    off <- fread(input_filepath, na = c(''), encoding = "UTF-8")
 
-# Append 0 for NAs in data frame
-off_df[is.na(off_df)] <- 0
-off_mat <- as.matrix(off_df)
+    # Reshape from long to wide
+    off_df <- dcast(off, year ~ group, value.var = "N", fun.aggregate = sum)
+    off_df <- merge(template, off_df, by = "year",all.x = T, all.y = F)
 
-# Create as matrix and set row names
-rownames <- off_mat[, 1]
-if(dim(off_mat)[2] <= 2){
-    off_mat <- matrix(off_mat[, 2], ncol=1)
-    row.names(off_mat) <- rownames
+    # Append 0 for NAs in data frame
+    off_df[is.na(off_df)] <- 0
+    off_mat <- as.matrix(off_df)
+
+    # Create as matrix and set row names
+    rownames <- off_mat[, 1]
+    if(dim(off_mat)[2] <= 2){
+        off_mat <- matrix(off_mat[, 2], ncol=1)
+        row.names(off_mat) <- rownames
+    } else {
+        row.names(off_mat) <- rownames
+        off_mat <- off_mat[, -1]
+    }
+    
 } else {
-    row.names(off_mat) <- rownames
-    off_mat <- off_mat[, -1]
+    colnames <- colnames(count_mat)
+    rownames <- rownames(count_mat)
+    off_mat <- matrix(0, ncol=length(colnames), nrow=length(rownames))
+    rownames(off_mat) <- rownames
+    colnames(off_mat) <- colnames
 }
-
-if(model_params$te == 0){
-    off_mat[] <- 0 # set offset to zero
-}
-
-# note: model_params$te == 0 # no taxonomic effort
-#       model_params$te == 1 # taxonomic effort, by publications
-
-
 
 # Output to stan format
 
