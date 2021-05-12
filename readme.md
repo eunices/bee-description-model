@@ -138,6 +138,7 @@ For more information on the rationale of the validation method, refer to the pap
 ## Folder structure and important files
 
 - `data/`: where data should be added. Two important files required: `data.csv` and `offset.csv`. Sample data provided are `data-example.csv` and `offset-example.csv` which may be renamed to `data.csv` and `offset.csv` respectively to test out the model.
+- `params.r`: parameters that need to be set to run the entire modelling pipeline
 - `01-model.r`: modelling code which calls code from `code/model/` to preprocess data from `data/` and run the stan model
 - `02-forecast.r`: modelling code which calls code from `code/forecast/` for forecasting (into the future)
 - `03-evaluate.r`: model evaluation code which calls code from `code/evaluate/` for diagnostics and model fit using LOOAIC
