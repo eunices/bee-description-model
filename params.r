@@ -1,6 +1,6 @@
 model_params <- list(
     # number of validation years to leave out                 
-    va = 0,
+    va = 25,
 
     # stan chains
     chains = 4,

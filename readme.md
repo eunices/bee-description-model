@@ -40,7 +40,7 @@ libs <- .libPaths()
 - Run numbered steps sequentially `01-model.r` must be run first before `02-forecast.r` or `03-evaluate.r` but
 - Files are persisted so dependent scripts (e.g. `02-forecast.r`) may be run in the future without having re-run `01-model.r`
 - Some results are output as artifacts (`.csv`, `.pdf` files) others are printed to console.
-
+- If the model parameters or datasets are changed, contents in `model/` should be deleted and `01-model.r` must be re-run.
 
 ## Input data format
 
@@ -122,6 +122,20 @@ note: different forecasting windows will be output into the same folder (`model/
 source('03-evaluate.r')
 ```
 - Model diagnostics and model fit (LOOAIC) will be printed out in the R console.
+
+note: it is not uncommon for the model diagnostics to be violated. Sometimes increasing adapt_delta and the number of iterations helps, but this increases modelling duration.
+
+## How to: choose an appropriate window for forecasting
+
+- Open R and run the following:
+
+```r
+source('04-validate.r')
+```
+
+- Validation window chart using MAPE will be output to `model/validate/` folder.
+
+For more information on the rationale of the validation method, refer to the paper. 
 
 ## Folder structure and important files
 
