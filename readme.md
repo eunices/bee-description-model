@@ -138,7 +138,7 @@ For more information on the rationale of the validation method, refer to the pap
 ## Folder structure and important files
 
 - `data/`: where data should be added. Two important files required: `data.csv` and `offset.csv`. Sample data provided are `data-example.csv` and `offset-example.csv` which may be renamed to `data.csv` and `offset.csv` respectively to test out the model.
-- `01-model.r`: modelling code which calls code from `code/model/`
+- `01-model.r`: modelling code which calls code from `code/model/` to preprocess data from `data/` and run the stan model
 - `02-forecast.r`: modelling code which calls code from `code/forecast/` for forecasting (into the future)
 - `03-evaluate.r`: model evaluation code which calls code from `code/evaluate/` for diagnostics and model fit using LOOAIC
 - `04-validate.r`: modelling code which calls code from `code/validate/` to determine the  appropriate window for forecasting
@@ -147,12 +147,13 @@ For more information on the rationale of the validation method, refer to the pap
   - `code/forecast/`
   - `code/evaluate/`
   - `code/validate/`
-- `model/`: where model artifacts are persisted, including
+- `model/`: where model artifacts are persisted (and should be empty at first instance), including:
   - `model/count_info_ref.data.R`: data for in validation
   - `model/count_info.data.R`: data for modelling
   - `model/fit.data`: model fit
   - `model/post.data`: posterior samples (count data)
-  - `model/forecast-<X>-yrs.data`: posterior forecast (count data) for `X` number of years into the future from the last date. Recommended to use 10 years.
-  - `model/warnings.log`: warnings logged from `01-model.r`. May include stan warnings.
+  - `model/warnings.log`: warnings logged from `01-model.r`. May include stan warnings
   - `model/model.log`: model log, including model parameters and duration taken to run the stan model
-  - `model/results/*`: visualisations and summarised results (`csv` files)
+  - `model/results/*`: visualisations and summarised results (`csv` files) from the model
+  - `model/forecast/forecast-<X>-yrs.data`: posterior forecast (count data) for `X` number of years into the future from the last date. Recommended to use 10 years.
+  - `model/validate/*`: dataset and visualisation used in determining an appropriate window fore forecasting
