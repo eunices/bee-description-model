@@ -101,11 +101,12 @@ source('01-model.r')
 ```
 - Model fit and posterior simulation will be output into `model/`
 
-note: using the sample data (`data.csv` and `offset.csv`) with Intel Xeon W-2125 Processor with 32 GB RAM (tree depth 12, 4 chains), the duration increased with iterations or adapt delta hyperparameter changes:
+note: using the sample data (`data.csv` and `offset.csv`) with Intel Xeon W-2125 Processor with 32 GB RAM (tree depth 12, 4 chains), the duration increased with iterations and/or adapt delta hyperparameter changes:
 
 | Iterations | Adapt delta | Duration |
 |------------|-------------|----------|
 | 20000      | 0.9         | ~2 hours |
+| 50000      | 0.95        | ~6 hours |
 | 100000     | 0.9         | ~8 hours |
 
 ## How to: forecast using the model

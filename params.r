@@ -1,15 +1,15 @@
 model_params <- list(
     # number of validation years to leave out                 
-    va = 25,
+    va = 0,
 
     # stan chains
     chains = 4,
     
     # stan iterations
-    iter = 8000,     
+    iter = 50000,     
 
     # stan adapt delta               
-    adapt_delta = 0.8, 
+    adapt_delta = 0.95, 
 
     # stan tree depth
     td = 12
