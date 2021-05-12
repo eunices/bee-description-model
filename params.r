@@ -1,12 +1,22 @@
 model_params <- list(
-    chains = 4,                       # stan chains
-    iter = 20000,                     # stan iterations
-    adapt_delta = 0.9,                # stan adapt delta
-    td = 12,                          # stan tree depth
-    va = 0                            # number of validation years to leave out
+    # number of validation years to leave out                 
+    va = 0,
+
+    # stan chains
+    chains = 4,
+    
+    # stan iterations
+    iter = 8000,     
+
+    # stan adapt delta               
+    adapt_delta = 0.8, 
+
+    # stan tree depth
+    td = 12
 )
 
 forecast_params <- list(
-    fc = 10                           # number of forecast years
+    # number of forecast years
+    fc = 10
 )
 
