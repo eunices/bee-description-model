@@ -37,7 +37,9 @@ libs <- .libPaths()
 
 - Add input data
 
-- Run numbered steps sequentially `01-model.r` must be run first before `02-forecast.r` but files are persisted so `02-forecast.r` may be run in the future without having re-run `01-model.r`
+- Run numbered steps sequentially `01-model.r` must be run first before `02-forecast.r` or `03-evaluate.r` but
+- Files are persisted so dependent scripts (e.g. `02-forecast.r`) may be run in the future without having re-run `01-model.r`
+- Some results are output as artifacts (`.csv`, `.pdf` files) others are printed to console.
 
 
 ## Input data format
@@ -91,6 +93,7 @@ Description: aggregated offset data (by publication or by describer, or any othe
 ```r
 source('01-model.r')
 ```
+- Model fit and posterior simulation will be output into `model/`
 
 note: using the sample data (`data.csv` and `offset.csv`) with Intel Xeon W-2125 Processor with 32 GB RAM (tree depth 12, 4 chains), the duration increased with iterations or adapt delta hyperparameter changes:
 
@@ -99,7 +102,7 @@ note: using the sample data (`data.csv` and `offset.csv`) with Intel Xeon W-2125
 | 20000      | 0.9         | ~2 hours |
 | 100000     | 0.9         | ~8 hours |
 
-## How to: forecast based on the model
+## How to: forecast using the model
 
 - Edit `forecast_params` in `params.r`
 - Open R and run the following:
@@ -107,7 +110,10 @@ note: using the sample data (`data.csv` and `offset.csv`) with Intel Xeon W-2125
 ```r
 source('02-forecast.r')
 ```
-d
+- Forecast simulation will be output in `model/forecast/`
+
+note: different forecasting windows will be output into the same folder (`model/forecast`) but with different filenames indicating the duration of forecast (in years).
+
 ## How to: evaluate the model
 
 - Open R and run the following:
@@ -115,10 +121,14 @@ d
 ```r
 source('03-evaluate.r')
 ```
+- Model diagnostics and model fit (LOOAIC) will be printed out in the R console.
 
 ## Folder structure and important files
 
 - `data/`: where data should be added. Two important files required: `data.csv` and `offset.csv`. Sample data provided are `data-example.csv` and `offset-example.csv` which may be renamed to `data.csv` and `offset.csv` respectively to test out the model.
+- `01-model.r`: modelling code which calls code from `code/model/`
+- `01-forecast.r`: modelling code which calls code from `code/forecast/`
+- `01-evaluate.r`: modelling code which calls code from `code/evaluate/`
 - `code/`: 
   - `code/model/`: code for running the rstan model
   - `code/evaluate/`: model evaluation code (diagnostics and model fit using LOOAIC) 
