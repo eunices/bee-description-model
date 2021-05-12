@@ -127,8 +127,8 @@ source('03-evaluate.r')
 
 - `data/`: where data should be added. Two important files required: `data.csv` and `offset.csv`. Sample data provided are `data-example.csv` and `offset-example.csv` which may be renamed to `data.csv` and `offset.csv` respectively to test out the model.
 - `01-model.r`: modelling code which calls code from `code/model/`
-- `01-forecast.r`: modelling code which calls code from `code/forecast/`
-- `01-evaluate.r`: modelling code which calls code from `code/evaluate/`
+- `02-forecast.r`: modelling code which calls code from `code/forecast/`
+- `03-evaluate.r`: modelling code which calls code from `code/evaluate/`
 - `code/`: 
   - `code/model/`: code for running the rstan model
   - `code/evaluate/`: model evaluation code (diagnostics and model fit using LOOAIC) 
