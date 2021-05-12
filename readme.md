@@ -85,7 +85,12 @@ Description: aggregated offset data (by publication or by describer, or any othe
 source('01-model.r')
 ```
 
-note: using the sample data (`data.csv` and `offset.csv`) and provided parameters (`params.r`), model took ~2 hours to run on Intel Xeon W-2125 Processor with 32 GB RAM.
+note: using the sample data (`data.csv` and `offset.csv`) with Intel Xeon W-2125 Processor with 32 GB RAM (tree depth 12, 4 chains), the duration increased with iterations or adapt delta hyperparameter changes:
+
+| Iterations | Adapt delta | Duration |
+|------------|-------------|----------|
+| 20000      | 0.9         | ~2 hours |
+| 100000     | 0.9         | ~8 hours |
 
 ## How to: forecast based on the model
 
@@ -107,7 +112,7 @@ TODO:
 - `data/`: where data should be added. Two important files required: `data.csv` and `offset.csv`. Sample data provided are `data-example.csv` and `offset-example.csv` which may be renamed to `data.csv` and `offset.csv` respectively to test out the model.
 - `code/`: 
   - `code/model/`: code for running the rstan model
-  - `code/evaluate/`: model evaluation (diagnostics) code 
+  - `code/evaluate/`: model evaluation code (diagnostics and model fit using LOOAIC) 
   - `code/validate/`: model time series validation code to decide on appropriate window for forecasting
 - `model/`: where model artifacts are persisted, including
   - `model/count_info_ref.data.R`: data for in validation

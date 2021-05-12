@@ -9,7 +9,7 @@ load(paste0(dir_model, "fit.data"))
 
 # Save summary of model fit
 file <- paste0(dir_model, 'fit.csv')
-fwrite(summary(fit)$summary, file)
+write.csv(summary(fit)$summary, file)
 
 # Posterior simulations
 print(paste0(Sys.time(), " --- Making posterior simulation"))
