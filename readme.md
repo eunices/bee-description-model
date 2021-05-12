@@ -42,6 +42,14 @@ libs <- .libPaths()
 - Some results are output as artifacts (`.csv`, `.pdf` files) others are printed to console.
 - If the model parameters or datasets are changed, contents in `model/` should be deleted and `01-model.r` must be re-run.
 
+Example pipeline for script:
+```r
+source('01-model.r')
+source('02-forecast.r')
+source('03-evaluate.r')
+source('04-validate.r')
+```
+
 ## Input data format
 
 - For `data/data.csv`
