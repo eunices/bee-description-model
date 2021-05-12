@@ -1,5 +1,5 @@
 # Load raw data
-file <- paste0(dir_model, "data.csv")
+file <- paste0(dir_data, "data.csv")
 data_raw <- read.csv(file, na.strings=c(""), stringsAsFactors = T) 
 mapping <- create_mapping(data_raw)
 
