@@ -83,8 +83,6 @@ Description: aggregated offset data (by publication or by describer, or any othe
 - `group`: group for taxonomic effort metric
 - `N`: number of units of units of taxonomic effort 
 
-
-
 ## How to: run the model
 
 - Edit `model_params` in `params.r`
@@ -141,12 +139,14 @@ For more information on the rationale of the validation method, refer to the pap
 
 - `data/`: where data should be added. Two important files required: `data.csv` and `offset.csv`. Sample data provided are `data-example.csv` and `offset-example.csv` which may be renamed to `data.csv` and `offset.csv` respectively to test out the model.
 - `01-model.r`: modelling code which calls code from `code/model/`
-- `02-forecast.r`: modelling code which calls code from `code/forecast/`
-- `03-evaluate.r`: modelling code which calls code from `code/evaluate/`
+- `02-forecast.r`: modelling code which calls code from `code/forecast/` for forecasting (into the future)
+- `03-evaluate.r`: model evaluation code which calls code from `code/evaluate/` for diagnostics and model fit using LOOAIC
+- `04-validate.r`: modelling code which calls code from `code/validate/` to determine the  appropriate window for forecasting
 - `code/`: 
-  - `code/model/`: code for running the rstan model
-  - `code/evaluate/`: model evaluation code (diagnostics and model fit using LOOAIC) 
-  - `code/validate/`: model time series validation code to decide on appropriate window for forecasting
+  - `code/model/`
+  - `code/forecast/`
+  - `code/evaluate/`
+  - `code/validate/`
 - `model/`: where model artifacts are persisted, including
   - `model/count_info_ref.data.R`: data for in validation
   - `model/count_info.data.R`: data for modelling
