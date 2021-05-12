@@ -157,3 +157,42 @@ For more information on the rationale of the validation method, refer to the pap
   - `model/results/*`: visualisations and summarised results (`csv` files) from the model
   - `model/forecast/forecast-<X>-yrs.data`: posterior forecast (count data) for `X` number of years into the future from the last date. Recommended to use 10 years.
   - `model/validate/*`: dataset and visualisation used in determining an appropriate window fore forecasting
+
+
+## Session info
+
+RTools version 3.5
+
+```r
+> sessionInfo()
+R version 3.6.2 (2019-12-12)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 19041)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=English_Singapore.1252  LC_CTYPE=English_Singapore.1252   
+[3] LC_MONETARY=English_Singapore.1252 LC_NUMERIC=C                      
+[5] LC_TIME=English_Singapore.1252    
+
+attached base packages:
+[1] parallel  stats     graphics  grDevices utils     datasets  methods  
+[8] base     
+
+other attached packages:
+[1] dplyr_0.8.3        plyr_1.8.5         data.table_1.12.8  loo_2.2.0         
+[5] gamlss.dist_5.1-5  MASS_7.3-51.4      rstan_2.19.2       ggplot2_3.2.1     
+[9] StanHeaders_2.19.0
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.3         pillar_1.4.3       compiler_3.6.2     prettyunits_1.1.0 
+ [5] tools_3.6.2        pkgbuild_1.0.6     lifecycle_1.0.0    tibble_2.1.3      
+ [9] gtable_0.3.0       checkmate_1.9.4    pkgconfig_2.0.3    rlang_0.4.10      
+[13] cli_2.0.1          gridExtra_2.3      withr_2.1.2        stats4_3.6.2      
+[17] grid_3.6.2         tidyselect_0.2.5   glue_1.4.2         inline_0.3.15     
+[21] R6_2.4.1           processx_3.4.1     fansi_0.4.0        callr_3.4.0       
+[25] purrr_0.3.3        magrittr_1.5       backports_1.1.5    scales_1.1.0      
+[29] ps_1.3.0           matrixStats_0.55.0 assertthat_0.2.1   colorspace_1.4-1  
+[33] lazyeval_0.2.2     munsell_0.5.0      crayon_1.3.4     
+```
