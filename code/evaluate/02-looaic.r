@@ -1,5 +1,6 @@
 load(paste0(dir_model, "fit.data"))  
 loo <- get_loo(fit)
+print(loo)
 
 rm(fit)
 
