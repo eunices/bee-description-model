@@ -33,6 +33,13 @@ libs <- .libPaths()
 ```
 
 
+## How to: general overview
+
+- Add input data
+
+- Run numbered steps sequentially `01-model.r` must be run first before `02-forecast.r` but files are persisted so `02-forecast.r` may be run in the future without having re-run `01-model.r`
+
+
 ## Input data format
 
 - For `data/data.csv`
@@ -100,12 +107,14 @@ note: using the sample data (`data.csv` and `offset.csv`) with Intel Xeon W-2125
 ```r
 source('02-forecast.r')
 ```
-
-note: `02-forercast.r` should only be run *after* running `01-model.r` as it depends on the model artifacts persisted from `01-model.r`.
-
+d
 ## How to: evaluate the model
 
-TODO:
+- Open R and run the following:
+
+```r
+source('03-evaluate.r')
+```
 
 ## Folder structure and important files
 
