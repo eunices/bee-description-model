@@ -109,6 +109,7 @@ note: using the sample data (`data.csv` and `offset.csv`) with Intel Xeon W-2125
 | 50000      | 0.95        | ~6 hours |
 | 100000     | 0.9         | ~8 hours |
 
+
 ## How to: forecast using the model
 
 - Edit `forecast_params` in `params.r`

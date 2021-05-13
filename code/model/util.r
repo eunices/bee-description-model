@@ -423,8 +423,7 @@ save_plot1 <- function(sims, obs, labels, dir_model) {
 		geom_path(data = obs, aes(x = year, y = cml_value)) +
 		facet_wrap(~group, labeller = as_labeller(labels), scales = "fixed") +
 		ylab("Number of species\n") + 
-		xlab("Year") + theme +
-		scale_y_continuous(limits = c(0, 6000))
+		xlab("Year") + theme
 
 	ggsave(P, file = output1, width = 10, height = 6)
 	ggsave(P, file = output2, width = 10, height = 6)
