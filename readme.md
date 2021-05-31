@@ -1,4 +1,4 @@
-# Global trajectories of bee discovery
+# Global trajectories of bee description
 
 Eunice Jia Yu Soh, Luis Roman Carrasco, John Stoskopf Ascher*
 
