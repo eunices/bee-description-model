@@ -47,7 +47,7 @@ Example pipeline for script:
 source('01-model.r')
 source('02-forecast.r')
 source('03-evaluate.r')
-source('04-validate.r')
+
 ```
 
 ## Input data format
